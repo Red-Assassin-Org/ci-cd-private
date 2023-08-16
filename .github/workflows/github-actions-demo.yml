@@ -9,7 +9,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '14'
+        env:
+          super_secret: ${{ secrets.TOKEN_POC }}
       - run: npm install -g bats
       - run: bats -v
       - run: ls -la
       - run: env
+      - run: echo "The secret is $super_secret"
