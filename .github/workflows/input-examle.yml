@@ -1,0 +1,19 @@
+name: Input Example
+on:
+  workflow_dispatch:
+    inputs:
+      echo_string:
+        description: the string will be echoed in the pipeline output
+        required: true
+        default: Hello world
+
+jobs:
+  show_string:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        
+      - name: Echo String
+        run: echo ${{ github.event.inputs.echo_string }}
