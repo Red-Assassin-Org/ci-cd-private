@@ -1,10 +1,9 @@
 name: semgrep-sast-scan
-run-name: This is test
 on:
   pull_request:
-    branches: master
+    branches: main
   push:
-    branches: master
+    branches: main
   
 jobs:
   smegrep-full-scan:
