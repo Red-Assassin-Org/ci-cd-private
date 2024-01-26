@@ -20,10 +20,11 @@ jobs:
           path: automation-scripts
 
       - name: list directory structure
-        run: "ls -la"
+        run: "ls -la automation/scripts"
 
       - name: Setup Semgrep
-        run: bash -i custom-scripts/scripts/setup-semgrep.sh
+        run: |
+          bash -i automation-scripts/scripts/setup-semgrep.sh
 
 #      - name: Complete Scan
 #        run: bash -i custom-scripts/run-semgrep.sh automation-scripts/semgrep-rules/
