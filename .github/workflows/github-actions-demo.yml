@@ -6,7 +6,7 @@ on:
     branches: main
   
 jobs:
-  smegrep-full-scan:
+  semgrep-full-scan:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,6 +17,12 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: test/test
-          path: custom-scripts 
+          path: automation-scripts
+
+      - name: Setup Semgrep
+        run: bash -i custom-scripts/setup-semgrep.sh
+
+      - name: Complete Scan
+        run: bash -i custom-scripts/run-semgrep.sh automation-scripts/semgrep-rules/
         
       
