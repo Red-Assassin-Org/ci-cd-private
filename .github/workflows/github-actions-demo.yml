@@ -16,13 +16,16 @@ jobs:
       - name: fetch-semgrep-custom-scripts
         uses: actions/checkout@v2
         with:
-          repository: test/test
+          repository: red-assassin/automation-scripts
           path: automation-scripts
 
-      - name: Setup Semgrep
-        run: bash -i custom-scripts/setup-semgrep.sh
+      - name: list directory structure
+        run: "ls -la"
 
-      - name: Complete Scan
-        run: bash -i custom-scripts/run-semgrep.sh automation-scripts/semgrep-rules/
+#      - name: Setup Semgrep
+#       run: bash -i custom-scripts/setup-semgrep.sh
+
+#      - name: Complete Scan
+#        run: bash -i custom-scripts/run-semgrep.sh automation-scripts/semgrep-rules/
         
       
