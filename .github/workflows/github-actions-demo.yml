@@ -20,7 +20,7 @@ jobs:
           path: automation-scripts
 
       - name: list directory structure
-        run: "ls -la automation/scripts"
+        run: "ls -la"
 
       - name: Setup Semgrep
         run: |
