@@ -8,7 +8,8 @@ on:
 jobs:
   semgrep-full-scan:
     runs-on: ubuntu-latest
-    permissions: pull-requests
+    permissions: 
+     pull-requests: read
 
     steps:
       - name: Get the repo
