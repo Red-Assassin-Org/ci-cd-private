@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions: 
      pull-requests: read
+     contents: read
 
     steps:
       - name: Get the repo
