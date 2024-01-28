@@ -2,6 +2,8 @@
 
 // True Positives
 
+$temp_var = "hello world";
+
 function test1() {
     // ruleid: tainted-sql-string
     $query = "SELECT * FROM table WHERE Id = '".$_GET['url']."'";
