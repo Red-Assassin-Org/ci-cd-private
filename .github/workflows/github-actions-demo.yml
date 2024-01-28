@@ -26,7 +26,19 @@ jobs:
         run: |
           bash -i automation-scripts/scripts/setup-semgrep.sh
 
-#      - name: Complete Scan
-#        run: bash -i custom-scripts/run-semgrep.sh automation-scripts/semgrep-rules/
+      - name: Run built-in semgrep rules
+        uses: ankitjain28may/list-files-in-pr@v1.0
+        with:
+          githubToken: ${{ github.token }}
+          outputFormat: 'space-delimited'
+      - run: | 
+          if [ GITHUB_EVENT_NAME == "pull_request" ]; then
+            for file in ${{ steps.list-files.outputs.pullRequestFiles }}; do
+              echo $file;
+            done
+          else
+            echo "Pull request not found"
+          fi
         
+            
       
