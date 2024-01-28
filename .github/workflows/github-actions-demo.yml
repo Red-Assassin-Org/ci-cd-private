@@ -27,15 +27,11 @@ jobs:
           bash -i automation-scripts/scripts/setup-semgrep.sh
 
       - name: Run built-in semgrep rules
-        uses: ankitjain28may/list-files-in-pr@v1.0
-        with:
-          githubToken: ${{ github.token }}
-          outputFormat: 'space-delimited'
-      - run: | 
-          if [ GITHUB_EVENT_NAME == "pull_request" ]; then
-            for file in ${{ steps.list-files.outputs.pullRequestFiles }}; do
-              echo $file;
-            done
+        env: 
+          PR_NUMBER: ${{ github.event.number }}
+        run: | 
+          if [  $GITHUB_EVEN_NAME == "pull_request" ]; then
+            gh pr view $PR_NUMBER --json files --jq '.files.[].path'
           else
             echo "Pull request not found"
           fi
