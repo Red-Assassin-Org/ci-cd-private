@@ -37,7 +37,7 @@ jobs:
           if [ $GITHUB_EVENT_NAME == "pull_request" ]
           then
             gh pr view $PR_NUMBER --json files --jq '.files.[].path' | tee scan-files-list.txt
-            cat scan-files-list.txt | xargs -P 5 -I {} semgrep --config "p/sql-injection" {}
+            cat scan-files-list.txt | xargs -P 5 -I {} echo scanning {} && semgrep --config "p/sql-injection" {} -q
           else
             echo "Pull request not found"
           fi
