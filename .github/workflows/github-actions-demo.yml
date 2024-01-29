@@ -22,7 +22,7 @@ jobs:
           path: security-audit-automation
 
       - name: list directory structure
-        run: echo {{ github.event.repository.name }}
+        run: echo ${{ github.event.repository.name }}
         
       - name: Setup Semgrep
         run: |
