@@ -10,15 +10,21 @@ jobs:
      contents: read
 
     steps:
-      - name: Get the repo
+      - name: Fetch target repository
         uses: actions/checkout@v2
+
+      - name: Fetch Automation Scripts
+        uses: actions/checkout@v2
+        with:
+          repository: Red-Assassin-Org/ci-cd-private
+          path: automation-scripts
 
       - name: list directory structure
         run: echo $GITHUB_EVENT_NAME
 
       - name: Setup Semgrep
         run: |
-          bash -i scripts/setup-semgrep.sh
+          bash -i automatio-scripts/scripts/setup-semgrep.sh
 
       - name: Run built-in semgrep rules
         env: 
