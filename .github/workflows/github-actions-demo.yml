@@ -16,9 +16,9 @@ jobs:
       - name: Fetch Automation Scripts
         uses: actions/checkout@v2
         with:
-          repository: Red-Assassin-Org/ci-cd-private
+          repository: Red-Assassin-Org/security-audit-automation
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
-          path: automation-scripts
+          path: security-audit-automation
 
       - name: list directory structure
         run: echo $GITHUB_EVENT_NAME
