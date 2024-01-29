@@ -1,7 +1,6 @@
 name: semgrep-sast-scan
 on:
   pull_request:
-  push:
     
 jobs:
   semgrep-full-scan:
@@ -14,18 +13,12 @@ jobs:
       - name: Get the repo
         uses: actions/checkout@v2
 
-      - name: fetch-semgrep-custom-scripts
-        uses: actions/checkout@v2
-        with:
-          repository: red-assassin/automation-scripts
-          path: automation-scripts
-
       - name: list directory structure
         run: echo $GITHUB_EVENT_NAME
 
       - name: Setup Semgrep
         run: |
-          bash -i automation-scripts/scripts/setup-semgrep.sh
+          bash -i scripts/setup-semgrep.sh
 
       - name: Run built-in semgrep rules
         env: 
