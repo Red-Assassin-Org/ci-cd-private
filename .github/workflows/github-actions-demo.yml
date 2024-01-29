@@ -24,7 +24,7 @@ jobs:
 
       - name: Setup Semgrep
         run: |
-          bash -i automatio-scripts/scripts/setup-semgrep.sh
+          bash -i automation-scripts/scripts/setup-semgrep.sh
 
       - name: Run built-in semgrep rules
         env: 
