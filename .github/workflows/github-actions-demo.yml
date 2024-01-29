@@ -20,8 +20,7 @@ jobs:
           path: automation-scripts
 
       - name: list directory structure
-        run: echo $GITHUB_EVENT_NAME
-
+        run: ls -la
       - name: Setup Semgrep
         run: |
           bash -i automatio-scripts/scripts/setup-semgrep.sh
