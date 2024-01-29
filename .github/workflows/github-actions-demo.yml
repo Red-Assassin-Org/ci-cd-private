@@ -1,6 +1,7 @@
 name: semgrep-sast-scan
 on:
   pull_request:
+  workflow_dispatch:
     
 jobs:
   semgrep-full-scan:
@@ -21,8 +22,8 @@ jobs:
           path: security-audit-automation
 
       - name: list directory structure
-        run: echo $GITHUB_EVENT_NAME
-
+        run: echo {{ github.event.repository.name }}
+        
       - name: Setup Semgrep
         run: |
           bash -i security-audit-automation/scripts/setup-semgrep.sh
@@ -31,6 +32,7 @@ jobs:
         env: 
           PR_NUMBER: ${{ github.event.number }}
           GH_TOKEN: ${{ github.token }}
+          REPO_NAME: ${{ github.event.repository.name }}
         run: bash -i security-audit-automation/scripts/semgrep-built-in.sh
         
             
