@@ -34,10 +34,7 @@ jobs:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
           path: security-audit-automation
 
-      - name: sample docker run
-        run: docker run hello-world
-        
-      - name: Setup Semgrep
+      - name: Setup Semgrep Docker Image
         run: |
           bash -i security-audit-automation/scripts/setup-semgrep.sh
 
