@@ -34,8 +34,8 @@ jobs:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
           path: security-audit-automation
 
-      - name: list directory structure
-        run: echo ${{ github.event.repository.name }}
+      - name: sample docker run
+        run: docker run hello-world
         
       - name: Setup Semgrep
         run: |
