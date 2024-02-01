@@ -36,10 +36,10 @@ jobs:
 
       - name: Setup Semgrep Docker Image
         run: |
-          bash -i security-audit-automation/scripts/setup-semgrep.sh
+          bash security-audit-automation/scripts/setup-semgrep.sh
 
       - name: Run built-in semgrep rules  
-        run: bash -i security-audit-automation/scripts/semgrep-built-in.sh
+        run: bash security-audit-automation/scripts/semgrep-built-in.sh
         
             
       
