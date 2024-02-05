@@ -26,6 +26,11 @@ jobs:
     steps:
       - name: Fetch target repository
         uses: actions/checkout@v2
+        with:
+          path: src
+
+      - name: show directory structure
+        run: ls -la
 
       - name: Fetch Automation Scripts
         uses: actions/checkout@v2
