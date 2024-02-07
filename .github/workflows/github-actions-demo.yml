@@ -45,6 +45,9 @@ jobs:
 
       - name: Run built-in semgrep rules  
         run: bash security-audit-automation/scripts/semgrep-built-in.sh
+
+      - name: Run custom semgrep rules
+        run: bash security-audit-automation/scripts/semgrep-custom.sh
         
             
       
