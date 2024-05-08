@@ -1,7 +1,7 @@
 name: semgrep-sast-scan
 on:
   pull_request:
-    types: [created, closed]
+    types: [opened, closed]
   workflow_dispatch:
     
 jobs:
