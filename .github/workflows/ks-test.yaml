@@ -1,0 +1,52 @@
+name: ks-test
+on:
+  pull_request:
+    types: [opened, closed]
+  workflow_dispatch:
+    
+jobs:
+  semgrep-full-scan:
+    runs-on: ubuntu-latest
+    permissions: 
+     pull-requests: read
+     contents: read
+    env:
+     SEMGREP_RUN_ID: ${{ github.run_id }}
+     SEMGREP_RUN_ATTEMPT: ${{ github.run_attempt }}
+     SEMGREP_REPOSITORY_NAME: ${{ github.event.repository.name }}
+     SEMGREP_COMMIT_ID: ${{ github.event.pull_request.head.sha }}
+     SEMGREP_OWNER: ${{ github.repository_owner }}
+     SEMGREP_REPO_NAME: ${{ github.repository }}
+     SEMGREP_PR_NUMBER: ${{ github.event.number }}
+     SEMGREP_GITHUB_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+     SEMGREP_PR_BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
+     PR_NUMBER: ${{ github.event.number }}
+     GH_TOKEN: ${{ github.token }}
+     REPO_NAME: ${{ github.event.repository.name }}
+
+    steps:
+      - name: Fetch target repository
+        uses: actions/checkout@v2
+        with:
+          path: src
+
+      - name: show directory structure
+        run: ls -la
+
+      - name: Fetch Automation Scripts
+        uses: actions/checkout@v2
+        with:
+          repository: Red-Assassin-Org/security-audit-automation
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          path: security-audit-automation
+
+      - name: Setup Semgrep Docker Image
+        run: |
+          bash security-audit-automation/scripts/setup-semgrep.sh
+      - name: Run built-in semgrep rules  
+        run: bash security-audit-automation/scripts/semgrep-built-in.sh
+
+      - name: Run custom semgrep rules
+        run: bash security-audit-automation/scripts/semgrep-custom.sh
+        
+            
