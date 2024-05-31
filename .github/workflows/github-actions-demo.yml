@@ -25,6 +25,11 @@ jobs:
      PR_NUMBER: ${{ github.event.number }}
      GH_TOKEN: ${{ github.token }}
      REPO_NAME: ${{ github.event.repository.name }}
+     APP_ENV: prod
+     SEMGREP_DEFECTDOJO_TOKEN: ${{ secrets.SEMGREP_DEFECTDOJO_TOKEN }}
+     SEMGREP_SLACK_ALERT_BATCH_SIZE: 10
+     SEMGREP_SLACK_ALERT_WH: ${{ secrets.SEMGREP_SLACK_ALERT_WH }}
+     SEMGREP_SLACK_ERROR_ALERT_WH: ${{ secrets.SEMGREP_SLACK_ERROR_ALERT_WH }}
 
     steps:
       - name: Fetch target repository
