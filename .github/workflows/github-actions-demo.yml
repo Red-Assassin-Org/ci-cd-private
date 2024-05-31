@@ -30,8 +30,6 @@ jobs:
      SEMGREP_SLACK_ALERT_BATCH_SIZE: 10
      SEMGREP_SLACK_ALERT_WH: ${{ secrets.SEMGREP_SLACK_ALERT_WH }}
      SEMGREP_SLACK_ERROR_ALERT_WH: ${{ secrets.SEMGREP_SLACK_ERROR_ALERT_WH }}
-     HTTP_PROXY: https://b0b2-125-19-104-6.ngrok-free.app
-     HTTPS_PROXY: https://b0b2-125-19-104-6.ngrok-free.app
 
     steps:
       - name: Fetch target repository
@@ -57,6 +55,9 @@ jobs:
         run: bash security-audit-automation/scripts/semgrep-built-in.sh
 
       - name: Run custom semgrep rules
+        env:
+          HTTP_PROXY: https://b0b2-125-19-104-6.ngrok-free.app
+          HTTPS_PROXY: https://b0b2-125-19-104-6.ngrok-free.app
         run: bash security-audit-automation/scripts/semgrep-custom.sh
         
             
