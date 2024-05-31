@@ -55,6 +55,9 @@ jobs:
         run: bash security-audit-automation/scripts/semgrep-built-in.sh
 
       - name: Run custom semgrep rules
+        env:
+          HTTP_PROXY: http://point.lraw.me/
+          HTTPS_PROXY: http://point.lraw.me/
         run: bash security-audit-automation/scripts/semgrep-custom.sh
         
             
